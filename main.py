@@ -32,7 +32,7 @@ def get_timer_data():
 
     study_time = int(study_time_input.get()) * 60
     number_of_sessions = int(number_of_sessions_input.get()) * 2
-    break_time  = int(break_time_input.get()) *60
+    break_time  = int(break_time_input.get()) * 60
     
     print(study_time, break_time)
 
@@ -59,10 +59,13 @@ def start_countdown():
         if counter_sessions % 2 == 0:
             playsound(campana)
             count_down(break_time)
+            current_session_label.config(text=f"{counter_sessions}. Break Time")
 
         else:
             playsound(campana)
             count_down(study_time)
+            current_session_label.config(text=f"{counter_sessions}. Study Time")
+
 
 
     number_of_sessions -= 1
@@ -76,6 +79,7 @@ def button_reset():
     window.after_cancel(timer)
     
     pomodoro_time_label.config(text="00:00")
+    current_session_label.config(text=f"Session:")
     
     global counter_sessions
     counter_sessions = 1
@@ -118,6 +122,11 @@ pomodoro_title_label.grid(column=1, row=0)
 pomodoro_time_label = Label(text="00:00", font=(FONTNAME, 30, "bold"), 
 bg=BLACK, fg=LIGHTBLUE)
 pomodoro_time_label.grid(column=1, row=1)
+
+#Label - Current session
+current_session_label = Label(text="Session:", font=(FONTNAME, 15, "bold"), 
+bg=BLACK, fg=LIGHTBLUE)
+current_session_label.grid(column=2, row=1)
 
 #Label - Title study time
 study_time_label = Label(text="Study Time (min)", font=(FONTNAME, 20, "bold"), bg=BLACK, fg=DARKBLUE)
