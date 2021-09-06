@@ -25,6 +25,7 @@ FONTNAME = "Helvetica"
 #----------------------------------------
 ##Functions
 #take data from user
+
 def get_timer_data():
     global study_time
     global number_of_sessions
@@ -59,12 +60,12 @@ def start_countdown():
         if counter_sessions % 2 == 0:
             playsound(campana)
             count_down(break_time)
-            current_session_label.config(text=f"{counter_sessions}. Break Time")
+            current_session_label.config(text=f"{(counter_sessions/2)+0.5}. Break Time")
 
         else:
             playsound(campana)
             count_down(study_time)
-            current_session_label.config(text=f"{counter_sessions}. Study Time")
+            current_session_label.config(text=f"{(counter_sessions/2)+0.5}. Study Time")
 
 
 
